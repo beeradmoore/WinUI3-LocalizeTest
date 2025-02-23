@@ -33,8 +33,8 @@ namespace LocalizeTest
         /// </summary>
         public App()
         {
-            //Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "fr-FR";
-            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
+            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "fr-FR";
+            //Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
             this.InitializeComponent();
         }
 
@@ -44,15 +44,15 @@ namespace LocalizeTest
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse();
+            var resourceManager = new Microsoft.Windows.ApplicationModel.Resources.ResourceManager();
 
-            var test1Text = resourceLoader.GetString("Test1/Text");
-            var test2Text = resourceLoader.GetString("Test2/Text");
-            var test3Text = resourceLoader.GetString("Test3/Text");
+            var test1Text = resourceManager.MainResourceMap.TryGetValue("Resources/Test1/Text", resourceManager.CreateResourceContext());
+            var test2Text = resourceManager.MainResourceMap.TryGetValue("Resources/Test2/Text", resourceManager.CreateResourceContext());
+            var test3Text = resourceManager.MainResourceMap.TryGetValue("Resources/Test3/Text", resourceManager.CreateResourceContext());
 
-            Debug.WriteLine($"test1Text: {test1Text}");
-            Debug.WriteLine($"test2Text: {test2Text}");
-            Debug.WriteLine($"test3Text: {test3Text}");
+            Debug.WriteLine($"test1Text: {test1Text.ValueAsString}");
+            Debug.WriteLine($"test2Text: {test2Text.ValueAsString}");
+            Debug.WriteLine($"test3Text: {test3Text.ValueAsString}");
 
             m_window = new MainWindow();
             m_window.Activate();
