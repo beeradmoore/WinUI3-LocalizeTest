@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "LocalizeTest (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "LocalizeTest (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
