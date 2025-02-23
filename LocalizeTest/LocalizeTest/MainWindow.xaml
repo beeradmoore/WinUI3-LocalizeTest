@@ -11,11 +11,16 @@
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-        <TextBlock Text="Before" />
+        <TextBlock Text="Before - ResourceHelper" />
         <TextBlock Text="{x:Bind local:ResourceHelper.GetString('Test1/Text')}" />
         <TextBlock Text="{x:Bind local:ResourceHelper.GetString('Test2/Text')}" />
         <TextBlock Text="{x:Bind local:ResourceHelper.GetString('Test3/Text')}" />
-        <TextBlock Text="After" />
+        <TextBlock Text="After - ResourceHelper" />
+        <TextBlock Text="Before - Uid" />
+        <TextBlock x:Uid="Test1" />
+        <TextBlock x:Uid="Test2" />
+        <TextBlock x:Uid="Test3" />
+        <TextBlock Text="After - Uid" />
         <!-- <Button x:Uid="Test2" />
         <Button x:Uid="Test3" />-->
     </StackPanel>
